@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="./results.css">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<div id="main">
+    <img src="/assets/logo.png">
+    <input type="text" id="textSearch">
+    <button>Search</button>
+</div>
+<hr>
+<div id="results">
+    <div class="results">
+        <span class="totalResults">About 4,210,000 results (0.43 seconds) </span>
+        <div id="links"></div>
+
+    </div>
+</div>
+
+<script>
+        let aux = document.location.href.split('?query=');
+        let query = aux[1];
+        document.getElementById('textSearch').value = query;
+
+        fetch('http://localhost:8080/api/search?query=' + query)
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+            let html = '';
+            for (let resultSearch of json){
+                html += getHtmlResultSearch(resultSearch);
+            }
+            document.getElementById('links').outerHTML = html;
+        });
+
+        function getHtmlResultSearch(resultSearch){
+            return  `<h3><a href="${resultSearch.url}" target="_blank">${resultSearch.title}</a></h3>
+                        <span>${resultSearch.description}</span>`
+        }
+    </script>
+</body>
+</html>

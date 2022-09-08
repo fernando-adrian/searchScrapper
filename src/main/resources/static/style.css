@@ -1,0 +1,40 @@
+
+body, body * {
+    font-family: Verdana, Tahoma, sans-serif !important;
+}
+
+#main{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img{
+    margin-top: 100px;
+    width: 300px;
+}
+
+#search{
+    /* background-color: aquamarine; */
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* align-content: space-between; */
+}
+
+input{
+    margin-top: 50px;
+    height: 40px;
+    width: 75%;
+    border-radius: 25px;
+}
+
+button{
+    margin: auto;
+    margin-top: 20px;
+    width: 35%;
+    height: 40px;
+    font-size: larger;
+}
